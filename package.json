@@ -5,9 +5,10 @@
 	"scripts": {
 		"clean": "del build",
 		"lint": "eslint . --ext=.ts --fix",
-		"compile": "npm run lint && npm run clean && tsc",
+		"compile": "npm run lint && npm run clean && tsc && npm run copy:files",
 		"build": "npm run compile",
-		"prepare": "npm run build"
+		"prepare": "npm run build",
+		"copy:files": "cp 'src/adonis-app/source/.adonisrc.json' 'src/adonis-app/source/.env' 'build/src/adonis-app/source/'"
 	},
 	"author": "Vladyslav Parashchenko",
 	"license": "MIT",
@@ -22,7 +23,6 @@
 		"@types/node": "^14.17.1",
 		"chai": "^4.3.4",
 		"commitizen": "^4.2.4",
-		"cpx": "^1.5.0",
 		"cz-conventional-changelog": "^3.2.0",
 		"eslint": "^7.27.0",
 		"eslint-config-prettier": "^8.3.0",
