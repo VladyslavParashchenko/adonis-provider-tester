@@ -63,7 +63,7 @@ export class AdonisApplication {
 	}
 
 	private initApplication() {
-		this._httpServer = new Ignitor(join(__dirname, 'testAdonisApp')).httpServer()
+		this._httpServer = new Ignitor(join(__dirname, 'source')).httpServer()
 		this._application = this._httpServer.application
 	}
 
