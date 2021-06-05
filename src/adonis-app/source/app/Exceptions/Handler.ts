@@ -1,14 +1,12 @@
-import Logger from '@ioc:Adonis/Core/Logger'
-import HttpExceptionHandler from '@ioc:Adonis/Core/HttpExceptionHandler'
-
-export default class ExceptionHandler extends HttpExceptionHandler {
-	constructor() {
-		super(Logger)
-	}
-
+export default class ExceptionHandler {
 	protected ignoreStatuses = []
 
 	public async handle(error, ctx) {
-		return super.handle(error, ctx)
+		if (typeof error.handle === 'function') {
+			return error.handle(error, ctx)
+		}
+		return ctx.response.status(500).send({ error: 'UNHANDLED_ERROR' })
 	}
+
+	public async report() {}
 }

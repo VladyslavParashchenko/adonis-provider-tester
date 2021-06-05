@@ -23,8 +23,6 @@ export interface ApplicationConfig {
 	appConfig: object
 }
 
-export type ProviderConstructor = new (app: Application) => AdonisProvider
-
 export class AdonisApplication {
 	private _httpServer: HttpServer
 	private _application: Application
@@ -69,7 +67,9 @@ export class AdonisApplication {
 
 	private async initCustomProviders() {
 		this.customerProviderInstances = this.customProviders.map((Provider) => {
-			return new Provider(this._application)
+			return Provider.needsApplication
+				? new Provider(this._application)
+				: new Provider(this._application.container)
 		})
 	}
 
@@ -137,4 +137,10 @@ export class AdonisApplication {
 	public async stopApp() {
 		await this.application.shutdown()
 	}
+}
+
+export interface ProviderConstructor {
+	new (...providerArgs: unknown[]): AdonisProvider
+
+	needsApplication: boolean
 }
