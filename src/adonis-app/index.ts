@@ -3,10 +3,10 @@ import { createServer } from 'http'
 import { HttpServer } from '@adonisjs/core/build/src/Ignitor/HttpServer'
 import { ConfigContract } from '@ioc:Adonis/Core/Config'
 import { join } from 'path'
-import { Application } from '@adonisjs/application'
 import { ContainerBindings } from '@ioc:Adonis/Core/Application'
 import { IocContract } from '@adonisjs/fold'
 import { execOneByOne } from '../helpers/execOneByOne'
+import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
 export interface AdonisProvider {
 	ready?: () => Promise<void>
@@ -25,7 +25,7 @@ export interface ApplicationConfig {
 
 export class AdonisApplication {
 	private _httpServer: HttpServer
-	private _application: Application
+	private _application: ApplicationContract
 	private customerProviderInstances: AdonisProvider[] = []
 
 	constructor(
@@ -114,7 +114,7 @@ export class AdonisApplication {
 		return this._httpServer
 	}
 
-	public get application(): Application {
+	public get application(): ApplicationContract {
 		return this._application
 	}
 
