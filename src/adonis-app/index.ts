@@ -7,6 +7,7 @@ import { ContainerBindings } from '@ioc:Adonis/Core/Application'
 import { IocContract } from '@adonisjs/fold'
 import { execOneByOne } from '../helpers/execOneByOne'
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
+import { ServerContract } from '@ioc:Adonis/Core/Server'
 
 export interface AdonisProvider {
 	ready?: () => Promise<void>
@@ -27,6 +28,7 @@ export class AdonisApplication {
 	private _httpServer: HttpServer
 	private _application: ApplicationContract
 	private customerProviderInstances: AdonisProvider[] = []
+	private middlewaresMap: Record<string, string> = {}
 
 	constructor(
 		private customProviders: ProviderConstructor[] = [],
@@ -43,10 +45,16 @@ export class AdonisApplication {
 		return this
 	}
 
+	public registerNamedMiddleware(alias: string, middleware: string): this {
+		this.middlewaresMap[alias] = middleware
+		return this
+	}
+
 	public async loadApp(): Promise<this> {
 		await this.initApplication()
 		await this.initCustomProviders()
 		await this.registerProviders()
+		await this.registerMiddlewares()
 		await this.initApplicationConfigs()
 		await this.bootProviders()
 
@@ -136,6 +144,11 @@ export class AdonisApplication {
 
 	public async stopApp() {
 		await this.application.shutdown()
+	}
+
+	private async registerMiddlewares() {
+		const server: ServerContract = this._application.container.use('Adonis/Core/Server')
+		server.middleware.registerNamed(this.middlewaresMap)
 	}
 }
 
