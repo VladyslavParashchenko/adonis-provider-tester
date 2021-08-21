@@ -1,8 +1,8 @@
 import AdonisApplication from '../index'
 import { mocked } from 'ts-jest/utils'
 import { ProviderConstructor } from '../src/adonis-app/types'
-import { ConfigContract } from "@ioc:Adonis/Core/Config";
-import { Application } from "@adonisjs/application";
+import { ConfigContract } from '@ioc:Adonis/Core/Config'
+import { Application } from '@adonisjs/application'
 
 describe('Adonis provider tester test', () => {
 	test('provider loading', async () => {
@@ -14,7 +14,10 @@ describe('Adonis provider tester test', () => {
 		}))
 		provider.needsApplication = jest.fn().mockReturnValue(true)
 
-		const app = await AdonisApplication.initApplication([provider as any as ProviderConstructor])
+		const app = await new AdonisApplication()
+			.registerProvider(provider as any as ProviderConstructor)
+			.loadApp()
+
 		expect(mocked(provider)).toHaveBeenNthCalledWith(1, expect.any(Application))
 		expect(registerMock).toHaveBeenCalled()
 		expect(bootMock).toHaveBeenCalled()
@@ -26,10 +29,12 @@ describe('Adonis provider tester test', () => {
 		const configName = 'testConfig'
 		const testConfig = { a: 1, b: '1', c: true }
 
-		const app: AdonisApplication = await AdonisApplication.initApplication([], [{
-			configName: configName,
-			appConfig: testConfig
-		}])
+		const app = await new AdonisApplication()
+			.registerAppConfig({
+				configName: configName,
+				appConfig: testConfig,
+			})
+			.loadApp()
 
 		const config: ConfigContract = app.iocContainer.use('Adonis/Core/Config')
 		expect(config.get(configName)).toEqual(testConfig)
@@ -37,4 +42,3 @@ describe('Adonis provider tester test', () => {
 		await app.stopApp()
 	})
 })
-
