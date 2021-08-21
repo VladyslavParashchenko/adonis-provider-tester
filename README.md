@@ -1,18 +1,9 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Table of contents
-
-- [adonis5-provider-tester](#adonis5-provider-tester)
-- [Using](#using)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-
 # adonis5-provider-tester
 > AdonisJS
+
 [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
 
-> Test utils for running adonis providers for testing.
+> Util for running adonis providers for testing.
 
 # Using
 Setup adonis app with your providers and configs:
@@ -59,3 +50,15 @@ const app = await new AdonisApplication()
 	.registerNamedMiddleware('<middleware-name>', '<middleware-uri>')
 	.loadAppWithHttpServer()
 ```
+
+[typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
+
+[typescript-url]:  "typescript"
+
+[npm-image]: https://img.shields.io/npm/v/adonis5-cache.svg?style=for-the-badge&logo=npm
+
+[npm-url]: https://www.npmjs.com/package/adonis-provider-tester "npm"
+
+[license-image]: https://img.shields.io/npm/l/adonis5-cache?color=blueviolet&style=for-the-badge
+
+[license-url]: LICENSE.md "license"
