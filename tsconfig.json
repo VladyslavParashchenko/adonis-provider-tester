@@ -31,5 +31,8 @@
 			"@adonisjs/core"
 		]
 	},
-	"files": ["./node_modules/@adonisjs/core/build/adonis-typings/index.d.ts"]
+	"files": [
+		"./node_modules/@adonisjs/core/build/adonis-typings/index.d.ts",
+		"node_modules/@types/jest/index.d.ts"
+	]
 }

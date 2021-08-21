@@ -8,21 +8,7 @@ import { IocContract } from '@adonisjs/fold'
 import { execOneByOne } from '../helpers/execOneByOne'
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 import { ServerContract } from '@ioc:Adonis/Core/Server'
-
-export interface AdonisProvider {
-	ready?: () => Promise<void>
-
-	shutdown?: () => Promise<void>
-
-	register(): Promise<void>
-
-	boot(): Promise<void>
-}
-
-export interface ApplicationConfig {
-	configName: string
-	appConfig: object
-}
+import { AdonisProvider, ApplicationConfig, ProviderConstructor } from './types'
 
 export class AdonisApplication {
 	private _httpServer: HttpServer
@@ -84,7 +70,7 @@ export class AdonisApplication {
 	private async registerProviders() {
 		await this.application.setup()
 		await this.application.registerProviders()
-		const { providersWithShutdownHook, providersWithReadyHook } = (this.application as any) as {
+		const { providersWithShutdownHook, providersWithReadyHook } = this.application as any as {
 			providersWithReadyHook: AdonisProvider[]
 			providersWithShutdownHook: AdonisProvider[]
 		}
@@ -150,10 +136,4 @@ export class AdonisApplication {
 		const server: ServerContract = this._application.container.use('Adonis/Core/Server')
 		server.middleware.registerNamed(this.middlewaresMap)
 	}
-}
-
-export interface ProviderConstructor {
-	new (...providerArgs: unknown[]): AdonisProvider
-
-	needsApplication: boolean
 }
