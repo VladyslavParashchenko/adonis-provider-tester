@@ -55,10 +55,10 @@ const app = await new AdonisApplication()
 
 [typescript-url]:  "typescript"
 
-[npm-image]: https://img.shields.io/npm/v/adonis5-cache.svg?style=for-the-badge&logo=npm
+[npm-image]: https://img.shields.io/npm/v/adonis-provider-tester.svg?style=for-the-badge&logo=npm
 
 [npm-url]: https://www.npmjs.com/package/adonis-provider-tester "npm"
 
-[license-image]: https://img.shields.io/npm/l/adonis5-cache?color=blueviolet&style=for-the-badge
+[license-image]: https://img.shields.io/npm/l/adonis-provider-tester?color=blueviolet&style=for-the-badge
 
 [license-url]: LICENSE.md "license"
