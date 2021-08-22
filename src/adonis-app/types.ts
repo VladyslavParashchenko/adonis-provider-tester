@@ -1,7 +1,7 @@
 export interface ProviderConstructor {
 	new (...providerArgs: unknown[]): AdonisProvider
 
-	needsApplication: boolean
+	needsApplication?: boolean
 }
 
 export interface AdonisProvider {

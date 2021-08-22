@@ -61,9 +61,9 @@ export class AdonisApplication {
 
 	private async initCustomProviders() {
 		this.customerProviderInstances = this.customProviders.map((Provider) => {
-			return Provider.needsApplication
-				? new Provider(this._application)
-				: new Provider(this._application.container)
+			return Provider.needsApplication === false
+				? new Provider(this._application.container)
+				: new Provider(this._application)
 		})
 	}
 
