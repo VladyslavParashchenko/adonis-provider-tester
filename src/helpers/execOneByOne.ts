@@ -1,4 +1,4 @@
-export async function execOneByOne(promises: Promise<unknown>[]): Promise<void> {
+export async function execOneByOne(promises: Promise<unknown>[] | unknown[]): Promise<void> {
 	try {
 		for (const promise of promises) {
 			await promise

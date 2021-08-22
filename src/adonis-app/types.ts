@@ -5,13 +5,13 @@ export interface ProviderConstructor {
 }
 
 export interface AdonisProvider {
-	ready?: () => Promise<void>
+	ready?: () => Promise<void> | void
 
-	shutdown?: () => Promise<void>
+	shutdown?: () => Promise<void> | void
 
-	register(): Promise<void>
+	register(): Promise<void> | void
 
-	boot(): Promise<void>
+	boot(): Promise<void> | void
 }
 
 export interface ApplicationConfig {
