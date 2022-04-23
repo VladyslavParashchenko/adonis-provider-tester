@@ -16,31 +16,31 @@
 	"license": "MIT",
 	"main": "build/index.js",
 	"dependencies": {
-		"@adonisjs/ace": "^11.0.5",
-		"@adonisjs/core": "^5.4.2",
-		"@adonisjs/logger": "^4.1.1",
-		"@adonisjs/mrm-preset": "^5.0.2",
-		"@poppinss/dev-utils": "^2.0.0"
+		"@adonisjs/ace": "^11.2.3",
+		"@adonisjs/core": "^5.7.5",
+		"@adonisjs/logger": "^4.1.4",
+		"@adonisjs/mrm-preset": "^5.0.3",
+		"@poppinss/file-generator": "1.0.1"
 	},
 	"devDependencies": {
-		"@types/jest": "^27.4.0",
+		"@types/jest": "^27.0.3",
 		"@types/node": "^14.17.1",
 		"adonis-preset-ts": "^2.1.0",
 		"del-cli": "^4.0.1",
-		"eslint": "^8.6.0",
-		"eslint-config-prettier": "^8.3.0",
+		"eslint": "^8.14.0",
+		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-adonis": "^2.1.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"husky": "^4.3.8",
-		"jest": "^27.4.5",
-		"mrm": "^3.0.10",
-		"np": "^7.6.0",
-		"prettier": "^2.5.1",
-		"ts-jest": "^27.1.2",
+		"jest": "^27.5.1",
+		"mrm": "^4.0.0",
+		"np": "^7.6.1",
+		"prettier": "^2.6.2",
+		"ts-jest": "^27.1.4",
 		"ts-mockito": "^2.6.1",
-		"ts-node": "^10.4.0",
-		"typescript": "^4.5.4",
-		"pino-pretty": "^7.3.0"
+		"ts-node": "^10.7.0",
+		"typescript": "^4.5.5",
+		"pino-pretty": "^7.6.1"
 	},
 	"husky": {
 		"hooks": {
