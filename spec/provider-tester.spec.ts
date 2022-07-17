@@ -1,5 +1,4 @@
 import AdonisApplication from '../index'
-import { mocked } from 'ts-jest/utils'
 import { ProviderConstructor } from '../src/adonis-app/types'
 import { ConfigContract } from '@ioc:Adonis/Core/Config'
 import { Application } from '@adonisjs/application'
@@ -18,7 +17,7 @@ describe('Adonis provider tester test', () => {
 			.registerProvider(provider as any as ProviderConstructor)
 			.loadApp()
 
-		expect(mocked(provider)).toHaveBeenNthCalledWith(1, expect.any(Application))
+		expect(provider).toHaveBeenNthCalledWith(1, expect.any(Application))
 		expect(registerMock).toHaveBeenCalled()
 		expect(bootMock).toHaveBeenCalled()
 
