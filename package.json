@@ -1,6 +1,6 @@
 {
 	"name": "adonis-provider-tester",
-	"version": "1.4.0",
+	"version": "2.0.0",
 	"description": "Util for testing adonis provider",
 	"scripts": {
 		"clean": "del build",
