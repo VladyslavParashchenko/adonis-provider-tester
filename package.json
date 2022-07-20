@@ -8,7 +8,7 @@
 		"compile": "npm run lint && npm run clean && tsc && npm run copy:files",
 		"build": "npm run compile",
 		"prepare": "npm run build",
-		"copy:files": "cp 'src/adonis-app/source/.adonisrc.json' 'src/adonis-app/source/.env' 'build/src/adonis-app/source/'",
+		"copy:files": "mkdir -p build/src/adonis-app/source && cp 'src/adonis-app/source/.adonisrc.json' 'src/adonis-app/source/.env' 'build/src/adonis-app/source/'",
 		"test": "jest test --runInBand --testTimeout 30000",
 		"release": "np"
 	},

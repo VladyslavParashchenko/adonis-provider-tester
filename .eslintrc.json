@@ -10,5 +10,8 @@
 		"prettier/prettier": [
 			"error"
 		]
-	}
+	},
+	"ignorePatterns": [
+		"src/adonis-app/source/**/*.js"
+	]
 }

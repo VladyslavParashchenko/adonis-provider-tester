@@ -1,4 +1,4 @@
-export default {
+module.exports = {
 	appKey: '______________fake_app_secret______________',
 	http: {
 		trustProxy() {

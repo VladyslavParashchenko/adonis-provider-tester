@@ -1,6 +1,10 @@
 {
-	"autoloads": {
-		"App": "./app"
+	"typescript": false,
+	"aliases": {
+		"App": "app",
+		"Config": "config",
+		"Database": "database",
+		"Contracts": "contracts"
 	},
 	"exceptionHandlerNamespace": "App/Exceptions/Handler",
 	"providers": ["@adonisjs/core"]
